@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SyncPainter: Caption-guided Video Inpainting with Multimodal Semantic Alignment</title>
+    <meta
+      name="description"
+      content="SyncPainter: Caption-guided Video Inpainting with Multimodal Semantic Alignment."
+    >
+    <link rel="canonical" href="https://bloomis.github.io/SyncPainter/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SyncPainter: Caption-guided Video Inpainting with Multimodal Semantic Alignment">
+    <meta
+      property="og:description"
+      content="Caption-guided video inpainting steered by multimodal large language models for semantically coherent restoration, removal, and addition."
+    >
+    <meta property="og:url" content="https://bloomis.github.io/SyncPainter/">
+    <meta property="og:image" content="https://bloomis.github.io/SyncPainter/og.jpg">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="paper-header">
+        <h1>
+          SyncPainter: Caption-guided Video Inpainting with
+          <br>Multimodal Semantic Alignment
+        </h1>
+        <nav class="paper-links" aria-label="Paper links">
+          <a href="#abstract">Paper</a>
+          <a href="#results">Results</a>
+          <span aria-label="Code coming soon">Code</span>
+          <span aria-label="Dataset coming soon">Dataset</span>
+          <span aria-label="BibTeX coming soon">BibTeX</span>
+        </nav>
+      </header>
+
+      <img
+        class="abstract-preview"
+        src="./paper-assets/teaser.jpg"
+        alt="SynC-Inpainter performs caption-guided video restoration, object removal, and object addition across Davis, VPBench, and Human-Inpaint benchmarks"
+      >
+
+      <section class="text-section" id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          Existing video inpainting methods often produce visually plausible but semantically incoherent results in
+          complex scenes because they lack explicit high-level guidance. To address this, we introduce
+          <strong>SynC-Inpainter</strong>, a novel framework centered entirely on caption-guided video inpainting.
+          Our approach pioneers the use of descriptive scene-level and object-specific captions from large multimodal
+          models (VideoLLaMA3 and Qwen3) to steer the generative process, ensuring strong semantic grounding.
+        </p>
+        <p>
+          This language-driven synthesis is supported by a <strong>mask-aware dual-path attention</strong> mechanism
+          that preserves fine-grained spatial structures by separating self-attention on the noisy latent from
+          cross-attention on the masked reference. Furthermore, to facilitate the development of such language-aware
+          models, we constructed <strong>Human-Inpaint</strong>, a new large-scale dataset focused on human-involved
+          scenes with rich textual annotations. Experimental results demonstrate that our caption-guided approach
+          significantly outperforms previous work, particularly in removing human silhouettes and detailed textures,
+          achieving superior visual quality and semantic consistency across a wide range of diverse video domains.
+        </p>
+      </section>
+
+      <hr>
+
+      <section class="figure-section">
+        <h2>Method Overview</h2>
+        <p>
+          Scene-level and object-specific captions produced by multimodal large language models are encoded by a
+          frozen T5 text encoder and injected into the denoising DiT, while mask-aware dual-path attention separates
+          self-attention on the noisy latent from cross-attention on the masked reference, preserving fine-grained
+          spatial structures.
+        </p>
+        <img
+          class="method-figure"
+          src="./paper-assets/method.png"
+          alt="SynC-Inpainter framework: caption-guided denoising DiT with mask-aware dual-path attention"
+        >
+      </section>
+
+      <section class="figure-section" id="results">
+        <h2>Qualitative Comparison</h2>
+        <p>
+          Guided by descriptive captions, SynC-Inpainter removes human silhouettes and restores detailed textures more
+          faithfully than DiffuEraser, ProPainter, and VideoPainter across restoration, removal, and addition tasks.
+        </p>
+        <img
+          src="./paper-assets/comparison.png"
+          alt="Comparison with DiffuEraser, ProPainter, and VideoPainter on restoration, removal, and addition tasks"
+        >
+      </section>
+
+      <footer>SyncPainter: Caption-guided Video Inpainting with Multimodal Semantic Alignment</footer>
+    </main>
+  </body>
+</html>
